@@ -22,18 +22,17 @@ int main()
 	printf("Enter string 2: ");
 	gets(str2);
 
-	//NOTE THAT THIS WILL CHANGE STR1 TO STR1+STR2
-	printf("Catenated String is %s\n", concat(str1,str2));
-
 	if (strcmpr(str1,str2))
 		printf("Both string are not Same.\n");
 	else
 		printf("Both String Same\n");
 
-	str1 = strrevrs(str1);
-	str2 = strrevrs(str2);
+	printf("Concatenated String is %s\n", concat(str1,str2));
 
-	printf("Reverse of \nString 1 is: %s\nString 2 is: %s\n",str1,str2);
+	char *rev1, *rev2;
+	rev1 = strrevrs(str1);
+	rev2 = strrevrs(str2);
+	printf("Reverse of \nString 1 is: %s\nString 2 is: %s\n",rev1,rev2);
 
 	free(str1);
 	free(str2);
@@ -47,6 +46,7 @@ char* concat(char *a, char *b)
 		a++;
 	while(*b!='\0')
 		*a++ = *b++;
+	*a='\0';
 	return ret;
 }
 
@@ -64,20 +64,18 @@ int strcmpr(char *a, char *b)
 
 char* strrevrs(char *str)
 {
-	char *rev,*rem=str;
-	rev = (char*)malloc(sizeof(char)*N);
-	char *revb=rev;
-
-	while(*str!='\0')
-		str++;
-	str--;
-	while(rem!=str+1)
-	{
-		*rev = *str;
+	char *rev=str,temp,*rem=str;
+	while(*rev!='\0')
 		rev++;
-		str--;
+	rev--;
+	while(str<rev)
+	{
+		temp=*str;
+		*str=*rev;
+		*rev=temp;
+		str++;
+		rev--;
+
 	}
-	free(rem);
-	str = revb;
-	return str;
+	return rem;
 }
