@@ -19,9 +19,9 @@ void add(teleDir *t)
 	getchar();
 	printf("Enter Name:");
 	gets(t->name);
-	printf("Enter phone no:");
+	printf("Enter email: ");
 	gets(t->email);
-	printf("Enter email:");
+	printf("Enter phone No.: ");
 	gets(t->phoneNo);
 	fwrite(t,sizeof(teleDir),1,fptr);
 	fclose(fptr);
