@@ -1,4 +1,6 @@
-//created by SACHIN
+// created by SACHIN
+// This Shifts elements in an array by x (user input) amount towards left;
+// Left Shifter in array;
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,4 +1,5 @@
-//created by SACHIN
+// created by SACHIN
+// Perform all basic operations in a linklist like adding, deleting, finding length, viewing elements in a linklist;
 
 #include <stdio.h>
 #include <stdlib.h>

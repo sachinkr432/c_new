@@ -1,4 +1,5 @@
-//created by SACHIN
+// created by SACHIN
+// This creates a triple form of a given Sparse matrix if condition is met. Triples are allocated dynamically;
 
 #include <stdio.h> 
 #include <stdlib.h>

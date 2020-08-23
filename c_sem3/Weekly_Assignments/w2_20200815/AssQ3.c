@@ -1,4 +1,5 @@
-//created by SACHIN
+// created by SACHIN
+// shifts all 0s towards extreme left in an unsorted array;
 
 #include <stdio.h>
 #include <stdlib.h>

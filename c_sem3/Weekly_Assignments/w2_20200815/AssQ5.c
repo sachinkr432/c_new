@@ -1,4 +1,5 @@
-//created by SACHIN
+// created by SACHIN
+// Checks whether two linklist are IDENTICAL or not;
 
 #include <stdio.h>
 #include <stdlib.h>
