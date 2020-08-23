@@ -1,3 +1,7 @@
+// created by SACHIN
+// Program to find rth position element from last in a n-length Single Link List
+// It follows recursion of function!!!
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +14,7 @@ typedef struct Node
 void displayAll( node **);
 void createNode( node **);
 void findPosLast(node **);
+int _findPosLast(node **, int);
 
 int main()
 {
@@ -75,24 +80,28 @@ void displayAll(node **head)
 
 void findPosLast(node **head)
 {
-	static int x = 0;
+	int c, res;
 	node *ptr;
 	printf("\nEnter Position from last: ");
-	scanf("%d", &x);
-	ptr = _findPosLast(head);
+	scanf("%d", &c);
+	res = _findPosLast(head, c);
+	if(res > 0)
+		printf("Index error!!");
+	return;
 }
 
-node *_findPosLast(node **head)
+int _findPosLast(node **head, int x)
 {
+	node *ptr = *head;
 	if (*head == NULL)
-	{
-		x--;
-		return NULL;
-	}
-	_findPosLast(&(*head->next));
+		return x;
+	x = _findPosLast(&((*head)->next), x);
 	x--;
 	if(x == 0)
-		return *head;
+	{
+		printf("Element is: %d", ptr->num);
+		return x;
+	}
 	else
-		return;
+		return x;
 }
