@@ -98,15 +98,15 @@ void addPoly(struct node **head, int n)
 				ptr2->coef = ptr1->coef;
 				ptr2->next = NULL;
 				ptr1 = ptr1->next;
-				break;
+				continue;
 			}
 			ptr2 = head[n];
 			preptr = ptr2;
 			while(ptr2 != NULL)
 			{
-				if(preptr->expo == ptr1->expo)
+				if(ptr2->expo == ptr1->expo)
 				{
-					preptr->coef += ptr1->coef;
+					ptr2->coef += ptr1->coef;
 					break;
 				}
 				preptr = ptr2;
