@@ -83,23 +83,13 @@ void showPoly(struct node *ptr)
 void addPoly(struct node **head, int n)
 {
 	int i = 0;
-	struct node *ptr1, *ptr2;
+	struct node *ptr1, *ptr2, *preptr;
 	printf("Hiiiiii\n");
 	while(i<n)
 	{
 		ptr1 = head[i];
 		while(ptr1 != NULL)
 		{
-			ptr2 = head[n];
-			while(ptr2 != NULL)
-			{
-				if(ptr2->expo == ptr1->expo)
-				{
-					ptr2->coef += ptr1->coef;
-					break;
-				}
-				ptr2 = ptr2->next;
-			}
 			if (head[n] == NULL)
 			{
 				head[n] = (struct node*)malloc(sizeof(struct node));
@@ -107,11 +97,26 @@ void addPoly(struct node **head, int n)
 				ptr2->expo = ptr1->expo;
 				ptr2->coef = ptr1->coef;
 				ptr2->next = NULL;
-
+				ptr1 = ptr1->next;
+				break;
 			}
+			ptr2 = head[n];
+			preptr = ptr2;
+			while(ptr2 != NULL)
+			{
+				if(preptr->expo == ptr1->expo)
+				{
+					preptr->coef += ptr1->coef;
+					break;
+				}
+				preptr = ptr2;
+				ptr2 = ptr2->next;
+			}
+			
 			if(ptr2 == NULL)
 			{
-				ptr2 = (struct node*)malloc(sizeof(struct node));
+				preptr->next = (struct node*)malloc(sizeof(struct node));
+				ptr2 = preptr->next;
 				ptr2->expo = ptr1->expo;
 				ptr2->coef = ptr1->coef;
 				ptr2->next = NULL;
