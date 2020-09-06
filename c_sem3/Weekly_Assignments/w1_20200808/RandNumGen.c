@@ -7,12 +7,13 @@ int main()
 	float time_in_sec;
 
 	clock_t start, end;
-	start = clock();
+	
 	int n,I,J,Duplicate,Numbers[1000];
 	FILE *fptr;
 	printf("Enter how many random numbers you want to generate");
 	scanf("%d",&n);
 	//for loop to generate a complete set of n random numbers
+	start = clock();
 	for (I = 0; I < n; I++)
 	{
 		// do while loop used to generate random numbers until a distinct random number is generated
@@ -21,14 +22,23 @@ int main()
 			Duplicate = 0; // set check to false
 			Numbers[I] = (rand()%n) + 1; // generates a random number 1 - n and stores it into Numbers[I]
 			// for loop used to check the other numbers in set for any repeats
-			for (J = I - 1; J > -1; J--) // works backwards from the recently generated element to element 0
-				if (Numbers[I] == Numbers[J]) //checks if number is already used
+			for (J = I - 1; J > -1; J--) 
+				if (Numbers[I] == Numbers[J]) 
+				{
 					Duplicate = 1; //sets Duplicate to true to indicate there is a repeat
+					break;
+				}
 		} while (Duplicate); //loops until a new, distinct number is generated
 	}
-	for(I=0;I<n;I++)
-		printf("%d ",Numbers[I]);
-	fptr = (fopen("random_numbers.txt", "w"));
+
+	//int count = 0;
+	//for(I=0;I<n;I++)
+	//{
+		//printf("%d ",Numbers[I]);
+		//count ++;
+	//}
+	//printf("\nTotal nos: %d\n", count);
+	fptr = (fopen("unsorted.txt", "w"));
 	if(fptr == NULL)
 	{
 		printf("Error!");
